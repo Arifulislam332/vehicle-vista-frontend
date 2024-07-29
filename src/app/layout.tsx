@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html>
+    <html lang="en" className="scroll-y-smooth">
       <body className={rubik.className}>
         <main className="min-h-screen flex flex-col">
           <Header />
