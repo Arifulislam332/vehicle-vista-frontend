@@ -17,11 +17,8 @@ const MobileNav = () => {
       <SheetContent className="bg-navey space-y-5">
         <SheetTitle className="text-white">Navigation</SheetTitle>
         <SheetDescription className="flex">
-          <Button
-            variant="ghost"
-            className="font-bold flex-1 gap-2 text-white hover:text-white hover:bg-white/10"
-          >
-            <LogIn className="text-gray" size={20} />
+          <Button className="transition duration-300 ease-in-out flex-1 bg-green-500 hover:bg-white/10 gap-2 tran">
+            <LogIn className="" size={20} />
             Log In
           </Button>
         </SheetDescription>

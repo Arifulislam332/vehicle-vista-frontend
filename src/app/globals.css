@@ -67,3 +67,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+.swiper-pagination-bullet,
+.swiper-pagination-bullet-active {
+  background-color: #22c55e !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #22c55e !important;
+  fill: #22c55e !important;
+  stroke: #22c55e !important;
+}
