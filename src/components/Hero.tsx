@@ -1,13 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import SearchBar from "@/components/SearchBar";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import Link from "next/link";
-import { Button } from "./ui/button";
 
 const Hero = () => {
   const data = [
@@ -40,22 +39,7 @@ const Hero = () => {
                 fill
                 priority
               />
-              <div className="absolute z-[1] top-0 left-0 bottom-0 right-0 flex flex-col gap-5 justify-center text-center items-center w-full h-full container mx-auto text-white md:p-20">
-                <h1 className="text-4xl md:text-6xl font-semibold">
-                  Find Best Car & Car Accessories
-                </h1>
-                <p className="text-xl">
-                  From as low as $10 per day with limited time offer discounts.
-                </p>
-                <Link href="/#get-started">
-                  <Button
-                    size="lg"
-                    className="md:text-xl transition duration-300 ease-in-out bg-green-500 hover:bg-white/20"
-                  >
-                    Get Started
-                  </Button>
-                </Link>
-              </div>
+              <SearchBar />
             </div>
           </SwiperSlide>
         ))}

@@ -7,8 +7,11 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 import { Button } from "./ui/button";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const MobileNav = () => {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+
   return (
     <Sheet>
       <SheetTrigger>
@@ -17,8 +20,11 @@ const MobileNav = () => {
       <SheetContent className="bg-navey space-y-5">
         <SheetTitle className="text-white">Navigation</SheetTitle>
         <SheetDescription className="flex">
-          <Button className="transition duration-300 ease-in-out flex-1 bg-green-500 hover:bg-white/10 gap-2 tran">
-            <LogIn className="" size={20} />
+          <Button
+            onClick={async () => loginWithRedirect()}
+            className="transition duration-300 ease-in-out flex-1 bg-green-500 hover:bg-white/10 hover:text-gray gap-2 tran"
+          >
+            <LogIn size={20} />
             Log In
           </Button>
         </SheetDescription>
