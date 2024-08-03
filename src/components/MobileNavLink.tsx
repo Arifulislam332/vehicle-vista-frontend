@@ -8,7 +8,10 @@ const MobileNavLink = () => {
 
   return (
     <div className="w-full h-full flex flex-col gap-3">
-      <Link className="text-white flex items-center gap-2" href="/user-profile">
+      <Link
+        className="text-white flex items-center gap-2 hover:bg-white/10 p-2.5 rounded-md transition duration-300 ease-in-out"
+        href="/user-profile"
+      >
         <User className="text-gray" size={20} />
         Your Profile
       </Link>
