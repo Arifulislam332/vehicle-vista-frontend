@@ -20,8 +20,8 @@ const config = {
     extend: {
       colors: {
         black: "#000000",
-        navey: "#000F16",
-        gray: "#6A6A6A",
+        navey: "#0d1117",
+        gray: "#737373",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

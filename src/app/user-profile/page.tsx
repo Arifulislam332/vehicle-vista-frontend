@@ -1,9 +1,11 @@
-import React from 'react'
+"use client";
 
-const UserProfile = () => {
-  return (
-    <div>UserProfile</div>
-  )
-}
+import UserProfileForm from "@/components/UserProfileForm";
+import { useUpdateUser } from "@/hooks/useUpdateUser";
 
-export default UserProfile
+const UserProfilePage = () => {
+  const { isLoading, updateUser } = useUpdateUser();
+  return <UserProfileForm isLoading={isLoading} onSave={updateUser} />;
+};
+
+export default UserProfilePage;
