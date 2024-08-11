@@ -12,7 +12,7 @@ export const useUpdateUser = () => {
     const res = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "PUT",
       headers: {
-        Authorizaton: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),

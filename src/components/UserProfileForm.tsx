@@ -22,9 +22,8 @@ const formSchema = z.object({
   email: z.string().optional(),
   name: z.string().min(3, "Name is required"),
   addressLine1: z.string().min(3, "addressLine1 is required"),
-  country: z.string().min(3, "country is required"),
   city: z.string().min(3, "city is required"),
-  contact: z.string(),
+  country: z.string().min(3, "country is required"),
 });
 
 export type UserFormDataType = z.infer<typeof formSchema>;
@@ -44,7 +43,7 @@ const UserProfileForm = ({ isLoading, onSave }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSave)} className="bg-navey h-screen">
-        <div className="md:py-20 py-10 container mx-auto space-y-5">
+        <div className="py-10 container mx-auto md:space-y-5 space-y-3">
           <div>
             <h2 className="text-2xl font-semibold text-white">Your profile</h2>
             <FormDescription className="text-gray">
@@ -52,7 +51,7 @@ const UserProfileForm = ({ isLoading, onSave }: Props) => {
             </FormDescription>
           </div>
           <div className="w-full h-full flex flex-col gap-2 justify-center items-center">
-            <Avatar className="md:h-52 h-32 w-32 md:w-52">
+            <Avatar className="md:h-40 h-32 w-32 md:w-40">
               <AvatarImage src={user?.picture} />
               <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
             </Avatar>
@@ -98,31 +97,12 @@ const UserProfileForm = ({ isLoading, onSave }: Props) => {
             )}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <FormField
-              control={form.control}
-              name="contact"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">Contact</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      className="bg-white/10 text-gray border-none font-semibold tracking-wide"
-                      {...field}
-                      placeholder="01XXXXXX"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 gap-3">
             <FormField
               control={form.control}
               name="addressLine1"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="">
                   <FormLabel className="text-white">AddressLine1</FormLabel>
                   <FormControl>
                     <Input
