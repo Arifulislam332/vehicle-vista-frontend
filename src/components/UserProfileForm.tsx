@@ -24,6 +24,7 @@ const formSchema = z.object({
   addressLine1: z.string().min(3, "addressLine1 is required"),
   city: z.string().min(3, "city is required"),
   country: z.string().min(3, "country is required"),
+  number: z.string(),
 });
 
 export type UserFormDataType = z.infer<typeof formSchema>;
@@ -98,6 +99,25 @@ const UserProfileForm = ({ isLoading, onSave }: Props) => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 gap-3">
+            <FormField
+              control={form.control}
+              name="number"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Number</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      className="bg-white/10 text-gray border-none font-semibold tracking-wide"
+                      {...field}
+                      placeholder="01XXXXX"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="addressLine1"
