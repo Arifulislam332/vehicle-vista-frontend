@@ -43,8 +43,8 @@ const UserProfileForm = ({ isLoading, onSave }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSave)} className="bg-navey h-screen">
-        <div className="py-10 container mx-auto md:space-y-5 space-y-3">
+      <form onSubmit={form.handleSubmit(onSave)} className="bg-navey">
+        <div className="py-20 container mx-auto md:space-y-5 space-y-3">
           <div>
             <h2 className="text-2xl font-semibold text-white">Your profile</h2>
             <FormDescription className="text-gray">

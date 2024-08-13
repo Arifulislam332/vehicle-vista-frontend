@@ -25,7 +25,9 @@ const UserMenu = () => {
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Button
-            onClick={() => logout()}
+            onClick={() =>
+              logout({ logoutParams: { returnTo: window.location.origin } })
+            }
             className="transition duration-300 ease-in-out  bg-green-500 hover:bg-white/10 hover:text-gray gap-2"
           >
             <LogOut size={20} /> Log Out
