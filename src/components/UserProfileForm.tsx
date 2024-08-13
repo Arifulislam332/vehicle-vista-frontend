@@ -12,9 +12,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { User } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -32,12 +34,18 @@ export type UserFormDataType = z.infer<typeof formSchema>;
 interface Props {
   isLoading: boolean;
   onSave: (userProfileData: UserFormDataType) => void;
+  currentUser: User;
 }
 
-const UserProfileForm = ({ isLoading, onSave }: Props) => {
+const UserProfileForm = ({ isLoading, currentUser, onSave }: Props) => {
   const form = useForm<UserFormDataType>({
     resolver: zodResolver(formSchema),
+    defaultValues: currentUser,
   });
+
+  useEffect(() => {
+    form.reset(currentUser);
+  }, [form, currentUser]);
 
   const { user } = useAuth0();
 
@@ -179,7 +187,7 @@ const UserProfileForm = ({ isLoading, onSave }: Props) => {
           >
             {isLoading ? (
               <span className="flex gap-2 items-center">
-                <Loader2 size={18} />
+                <Loader2 className="animate-spin" size={18} />
                 Submitting
               </span>
             ) : (
