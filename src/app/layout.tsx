@@ -26,7 +26,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               position="top-right"
               duration={3000}
             />
-            <main className="flex flex-col">
+            <main className="flex min-h-screen flex-col">
               <Header />
               <div className="flex-1">{children}</div>
             </main>

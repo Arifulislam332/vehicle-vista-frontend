@@ -26,7 +26,7 @@ const formSchema = z.object({
   addressLine1: z.string().min(3, "addressLine1 is required"),
   city: z.string().min(3, "city is required"),
   country: z.string().min(3, "country is required"),
-  number: z.string(),
+  number: z.string().min(0, "Number is required"),
 });
 
 export type UserFormDataType = z.infer<typeof formSchema>;
@@ -47,27 +47,15 @@ const UserProfileForm = ({ isLoading, currentUser, onSave }: Props) => {
     form.reset(currentUser);
   }, [form, currentUser]);
 
-  const { user } = useAuth0();
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSave)} className="bg-navey">
-        <div className="py-20 container mx-auto md:space-y-5 space-y-3">
+      <form onSubmit={form.handleSubmit(onSave)} className="bg-navey h-screen">
+        <div className="pt-20 container mx-auto space-y-5">
           <div>
             <h2 className="text-2xl font-semibold text-white">Your profile</h2>
             <FormDescription className="text-gray">
               View and update your profile fields
             </FormDescription>
-          </div>
-          <div className="w-full h-full flex flex-col gap-2 justify-center items-center">
-            <Avatar className="md:h-40 h-32 w-32 md:w-40">
-              <AvatarImage src={user?.picture} />
-              <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col items-center">
-              <h2 className="font-medium text-white">{user?.name}</h2>
-              <h5 className="text-gray">@{user?.email}</h5>
-            </div>
           </div>
 
           <FormField
@@ -106,7 +94,25 @@ const UserProfileForm = ({ isLoading, currentUser, onSave }: Props) => {
             )}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <FormField
+              control={form.control}
+              name="addressLine1"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">AddressLine1</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-white/10 text-gray border-none font-semibold tracking-wide"
+                      {...field}
+                      placeholder="1/2 Block-B"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="number"
@@ -119,24 +125,6 @@ const UserProfileForm = ({ isLoading, currentUser, onSave }: Props) => {
                       className="bg-white/10 text-gray border-none font-semibold tracking-wide"
                       {...field}
                       placeholder="01XXXXX"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="addressLine1"
-              render={({ field }) => (
-                <FormItem className="">
-                  <FormLabel className="text-white">AddressLine1</FormLabel>
-                  <FormControl>
-                    <Input
-                      className="bg-white/10 text-gray border-none font-semibold tracking-wide"
-                      {...field}
-                      placeholder="1/2 Block-B"
                     />
                   </FormControl>
                   <FormMessage />
